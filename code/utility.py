@@ -16,7 +16,7 @@ def dumpContent(listParam, fileNameParam):
   completeStrToWrite=""
   fileParam =  fileNameParam + ".csv"
   fileToWrite = open( fileParam, 'w');
-  lineStr =  "Counts"
+  lineStr =  "Counts" + "\n"
 
   for item in listParam:
     lineStr = lineStr + str(item) + "\n"
