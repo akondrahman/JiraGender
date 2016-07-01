@@ -2,6 +2,20 @@
 import db_connection, os
 import utility
 
+def getBugReportFromDB(authorIDParam, priorityParam):
+ connection = db_connection.giveConnection()
+ try:
+    with connection.cursor() as cursor:
+     sql = "SELECT COUNT(*) AS `CNT` FROM issue_report WHERE `reporter_id`=%s AND `type`='Bug' AND `priority`=%s;"
+     dataTuple=(str(authorIDParam), str(priorityParam))
+     cursor.execute(sql, dataTuple)
+     result = cursor.fetchall()
+
+ finally:
+   connection.close()
+ return result
+
+
 def getAllFemaleAuthors():
  connection = db_connection.giveConnection()
  try:
@@ -34,18 +48,6 @@ def preProcessauthorIDs(idListParam):
         allIDLists.append(author_id_)
     return allIDLists
 
-def getIssueReportFromDB(authorIDParam):
- connection = db_connection.giveConnection()
- try:
-    with connection.cursor() as cursor:
-     sql = "SELECT COUNT(*) AS `CNT` FROM `issue_report` WHERE `reporter_id`=%s;"
-     dataTuple=(str(authorIDParam))
-     cursor.execute(sql, dataTuple)
-     result = cursor.fetchall()
-
- finally:
-   connection.close()
- return result
 
 def preProcessCount(resultParam):
     countto_ret = 0.0
@@ -58,26 +60,37 @@ def preProcessCount(resultParam):
     return countto_ret
 
 
-def getIssueReportsList(author_id_param_list):
+def getBugReportsList(author_id_param_list, priority_):
    resultantIssueReportList = []
    for author_id_ in author_id_param_list:
-       issue_report_count = preProcessCount(getIssueReportFromDB(author_id_))
+       issue_report_count = preProcessCount(getBugReportFromDB(author_id_, priority_))
        resultantIssueReportList.append(issue_report_count)
    return resultantIssueReportList
 
 
 
+
+
 print "Starting at:", utility.giveTimeStamp()
+print "----------------------------------------"
+###
 allTheFemales = preProcessauthorIDs(getAllFemaleAuthors())
-print "Identified females:",len(allTheFemales)
-allTheMales = preProcessauthorIDs(getAllMaleAuthors())
-print "Identified males:",len(allTheMales)
-issue_reports_for_females = getIssueReportsList(allTheFemales)
-status=utility.dumpContent(issue_reports_for_females, 'F_ALL')
+allTheMales   = preProcessauthorIDs(getAllMaleAuthors())
+###
+f_critical_bug_list = getBugReportsList(allTheFemales, 'Critical')
+print "Total Critical Bug Count For Females:", sum(f_critical_bug_list)
+status=utility.dumpContent(f_critical_bug_list, 'F_C_B')
 print "Dumped a file of {} bytes".format(status)
-print "Total Female reports",sum(issue_reports_for_females)
-issue_reports_for_males = getIssueReportsList(allTheMales)
-status=utility.dumpContent(issue_reports_for_females, 'M_ALL')
+###
+f_major_bug_list = getBugReportsList(allTheFemales, 'Major')
+print "Total Major Bug Count For Females:", sum(f_major_bug_list)
+status=utility.dumpContent(f_major_bug_list, 'F_Ma_B')
 print "Dumped a file of {} bytes".format(status)
-print "Total Male reports",sum(issue_reports_for_males)
+###
+f_minor_bug_list = getBugReportsList(allTheFemales, 'Minor')
+print "Total Minor Bug Count For Females:", sum(f_minor_bug_list)
+status=utility.dumpContent(f_minor_bug_list, 'F_Mi_B')
+print "Dumped a file of {} bytes".format(status)
+###
+print "----------------------------------------"
 print "Ending at:", utility.giveTimeStamp()
