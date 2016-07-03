@@ -1,0 +1,77 @@
+[1] "### Critical Blocker:M:F: ###"
+[1] "---------------"
+[1] "Extraction: Mean of Male"
+[1] 0.05214458
+[1] "Extraction: Mean of Female"
+[1] 0.03198908
+[1] "Extraction: S.D of Male"
+[1] 0.9035881
+[1] "Extraction: S.D of Female"
+[1] 0.2720908
+[1] "---------------"
+[1] "### Critical Blocker:M:F: ###"
+[1] "-------------------------"
+[1] "M != F"
+
+	Welch Two Sample t-test
+
+data:  maleParam and femaleParam
+t = 4.3919, df = 21885.12, p-value = 1.129e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.01116028 0.02915071
+sample estimates:
+ mean of x  mean of y 
+0.05214458 0.03198908 
+
+[1] "-------------------------"
+[1] "M > F"
+
+	Welch Two Sample t-test
+
+data:  maleParam and femaleParam
+t = 4.3919, df = 21885.12, p-value = 5.644e-06
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 0.01260657        Inf
+sample estimates:
+ mean of x  mean of y 
+0.05214458 0.03198908 
+
+[1] "-------------------------"
+[1] "M < F"
+
+	Welch Two Sample t-test
+
+data:  maleParam and femaleParam
+t = 4.3919, df = 21885.12, p-value = 1
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf 0.02770442
+sample estimates:
+ mean of x  mean of y 
+0.05214458 0.03198908 
+
+[1] "-------------------------"
+[1] "### Critical Blocker:M:F: ###"
+[1] "---------------"
+[1] "Finally:::Cohen's D:::"
+[1] 0.0302058
+[1] "---------------"
+[1] "### Critical Blocker:M:F: ###"
+[1] "---------------"
+[1] ":::::VD-A12:::::"
+
+Vargha and Delaney A
+
+A estimate: 0.5008804 ()
+[1] "---------------"
+[1] ":::::Cliffs-Delta:::::"
+[1] "### Critical Blocker:M:F: ###"
+
+Cliff's Delta
+
+delta estimate: 0.001760733 (negligible)
+95 percent confidence interval:
+         inf          sup 
+-0.001899155  0.005420574 
