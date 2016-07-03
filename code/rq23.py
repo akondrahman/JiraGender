@@ -92,5 +92,20 @@ print "Total Minor Bug Count For Females:", sum(f_minor_bug_list)
 status=utility.dumpContent(f_minor_bug_list, 'F_Mi_B')
 print "Dumped a file of {} bytes".format(status)
 ###
+m_critical_bug_list = getBugReportsList(allTheMales, 'Critical')
+print "Total Critical Bug Count For Males:", sum(m_critical_bug_list)
+status=utility.dumpContent(m_critical_bug_list, 'M_C_B')
+print "Dumped a file of {} bytes".format(status)
+###
+m_major_bug_list = getBugReportsList(allTheMales, 'Major')
+print "Total Major Bug Count For Males:", sum(m_major_bug_list)
+status=utility.dumpContent(m_major_bug_list, 'M_Ma_B')
+print "Dumped a file of {} bytes".format(status)
+###
+m_minor_bug_list = getBugReportsList(allTheMales, 'Minor')
+print "Total Minor Bug Count For Males:", sum(m_minor_bug_list)
+status=utility.dumpContent(m_minor_bug_list, 'M_Mi_B')
+print "Dumped a file of {} bytes".format(status)
+###
 print "----------------------------------------"
 print "Ending at:", utility.giveTimeStamp()
