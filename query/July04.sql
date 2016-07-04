@@ -1,0 +1,25 @@
+USE emotion_in_jira; 
+-- Number of male minor bug reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='male') AND `type`='Bug' AND `priority`='Minor';
+-- Answer: 1247 
+-- Number of female minor bug reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='female') AND `type`='Bug' AND `priority`='Minor';
+-- Answer: 67
+-- Number of female major bug reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='female') AND `type`='Bug' AND `priority`='Major';
+-- Answer: 211
+-- Number of male major bug reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='male') AND `type`='Bug' AND `priority`='Major';
+-- Answer: 4328
+-- Number of female Critical bug reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='female') AND `type`='Bug' AND `priority`='Critical';
+-- Answer: 23
+-- Number of male critical bug reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='male') AND `type`='Bug' AND `priority`='Critical';
+-- Answer: 424
+-- Number of female issue reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='female') ;
+-- Answer: 638
+-- Number of male issue reports 
+-- SELECT COUNT(*) FROM issue_report WHERE `reporter_id` IN (SELECT `id` FROM `user` WHERE `gender`='male') ;
+-- Answer: 13603
